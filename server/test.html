@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ReleaseRadar API Test</title>
+
+<style>
+body{
+    font-family:Arial,sans-serif;
+    background:#f4f4f4;
+    margin:40px;
+}
+.container{
+    width:600px;
+    margin:auto;
+    background:white;
+    padding:20px;
+    border-radius:10px;
+    box-shadow:0 0 10px gray;
+}
+input,select,button{
+    width:100%;
+    padding:10px;
+    margin:8px 0;
+    box-sizing:border-box;
+}
+button{
+    background:#007bff;
+    color:white;
+    border:none;
+    cursor:pointer;
+}
+button:hover{
+    background:#0056b3;
+}
+pre{
+    background:black;
+    color:#00ff66;
+    padding:10px;
+}
+</style>
+
+</head>
+<body>
+
+<div class="container">
+
+<h2>ReleaseRadar API Test</h2>
+
+<h3>Register</h3>
+
+<input id="name" placeholder="Name">
+<input id="email" placeholder="Email">
+<input id="password" type="password" placeholder="Password">
+
+<button onclick="registerUser()">Register</button>
+
+<hr>
+
+<h3>Login</h3>
+
+<input id="loginEmail" placeholder="Email">
+<input id="loginPassword" type="password" placeholder="Password">
+
+<button onclick="loginUser()">Login</button>
+
+<hr>
+
+<h3>Add Movie</h3>
+
+<input id="title" placeholder="Movie Title">
+
+<input id="description" placeholder="Description">
+
+<input id="genre" placeholder="Genre">
+
+<input id="language" placeholder="Language">
+
+<input id="releaseDate" type="date">
+
+<input id="platform" placeholder="Platform">
+
+<input id="poster" placeholder="Poster URL">
+
+<input id="trailer" placeholder="Trailer URL">
+
+<input id="rating" type="number" placeholder="Rating">
+
+<select id="type">
+<option value="Movie">Movie</option>
+<option value="Series">Series</option>
+</select>
+
+<button onclick="addMovie()">Add Movie</button>
+
+<hr>
+
+<pre id="result">Waiting...</pre>
+
+</div>
+
+<script>
+
+const AUTH="http://localhost:5000/api/auth";
+const MOVIE="http://localhost:5000/api/movies";
+
+async function registerUser(){
+
+const response=await fetch(AUTH+"/register",{
+method:"POST",
+headers:{"Content-Type":"application/json"},
+body:JSON.stringify({
+name:name.value,
+email:email.value,
+password:password.value
+})
+});
+
+const data=await response.json();
+
+result.textContent=JSON.stringify(data,null,2);
+
+}
+
+async function loginUser(){
+
+const response=await fetch(AUTH+"/login",{
+method:"POST",
+headers:{"Content-Type":"application/json"},
+body:JSON.stringify({
+email:loginEmail.value,
+password:loginPassword.value
+})
+});
+
+const data=await response.json();
+
+result.textContent=JSON.stringify(data,null,2);
+
+}
+
+async function addMovie(){
+
+const response=await fetch(MOVIE,{
+method:"POST",
+headers:{
+"Content-Type":"application/json"
+},
+body:JSON.stringify({
+
+title:title.value,
+description:description.value,
+genre:genre.value,
+language:language.value,
+releaseDate:releaseDate.value,
+platform:platform.value,
+poster:poster.value,
+trailer:trailer.value,
+rating:Number(rating.value),
+type:type.value
+
+})
+});
+
+const data=await response.json();
+
+result.textContent=JSON.stringify(data,null,2);
+
+}
+
+</script>
+
+</body>
+</html>
