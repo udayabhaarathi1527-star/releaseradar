@@ -1,0 +1,14 @@
+﻿.git
+.venv
+node_modules
+client/node_modules
+client/dist
+server/node_modules
+*.zip
+*.zip.zip
+ml/shortfilm_data/*
+!ml/shortfilm_data/predict_shortfilm.py
+!ml/shortfilm_data/shortfilm_model.pkl
+ml/tmdb_5000_movies.csv
+ml/releaseradar_clean.csv
+ml/dataset.csv
