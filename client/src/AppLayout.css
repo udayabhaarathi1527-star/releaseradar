@@ -1,0 +1,365 @@
+/* =========================================
+   RELEASE RADAR - SHARED APP LAYOUT
+========================================= */
+
+.app-layout {
+  min-height: 100vh;
+  background: #050505;
+  color: #ffffff;
+}
+
+/* =========================================
+   STATIC HEADER
+========================================= */
+
+.app-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  width: 100%;
+
+  background: rgba(5, 5, 5, 0.96);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.app-header-inner {
+  width: min(1200px, calc(100% - 48px));
+  height: 74px;
+
+  margin: 0 auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 22px;
+}
+
+/* =========================================
+   LOGO
+========================================= */
+
+.app-logo {
+  border: none;
+  background: transparent;
+
+  padding: 0;
+
+  color: #ffffff;
+
+  font-size: 21px;
+  font-weight: 900;
+  letter-spacing: -0.8px;
+
+  cursor: pointer;
+}
+
+.app-logo span {
+  color: #ff1825;
+}
+
+/* =========================================
+   NAVIGATION
+========================================= */
+
+.app-navigation {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: clamp(14px, 2vw, 30px);
+
+  flex: 1;
+}
+
+.nav-link {
+  position: relative;
+
+  border: none;
+  background: transparent;
+
+  padding: 27px 0;
+  text-decoration: none;
+
+  color: #8b8b8b;
+
+  font-size: 12px;
+  font-weight: 800;
+
+  letter-spacing: 1px;
+
+  cursor: pointer;
+
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.nav-link:hover {
+  color: #ffffff;
+}
+
+.nav-link.active {
+  color: #ff1825;
+}
+
+.nav-link.active::after {
+  content: "";
+
+  position: absolute;
+
+  left: 50%;
+  bottom: 12px;
+
+  width: 22px;
+  height: 2px;
+
+  transform: translateX(-50%);
+
+  background: #ff1825;
+
+  border-radius: 10px;
+}
+
+/* =========================================
+   HEADER RIGHT
+========================================= */
+
+.app-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* =========================================
+   PROFILE
+========================================= */
+
+.profile-button {
+  width: 40px;
+  height: 40px;
+
+  padding: 0;
+
+  border-radius: 50%;
+
+  border: 1px solid rgba(255, 255, 255, 0.15);
+
+  background: #111111;
+
+  cursor: pointer;
+
+  transition:
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.profile-button:hover {
+  border-color: #ff1825;
+  transform: translateY(-1px);
+}
+
+.profile-avatar {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #ffffff;
+
+  font-size: 13px;
+  font-weight: 800;
+}
+
+/* =========================================
+   LOGOUT
+========================================= */
+
+.header-logout {
+  border: none;
+
+  padding: 11px 18px;
+
+  border-radius: 9px;
+
+  background: #ed111d;
+
+  color: #ffffff;
+
+  font-size: 11px;
+  font-weight: 900;
+
+  letter-spacing: 0.5px;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.header-logout:hover {
+  background: #ff2633;
+  transform: translateY(-1px);
+}
+
+.header-sign-in {
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 4px;
+  padding: 10px 16px;
+  background: transparent;
+  color: white;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.header-sign-in:hover {
+  border-color: var(--red-bright);
+}
+
+.account-menu-wrap {
+  position: relative;
+}
+
+.account-menu {
+  position: absolute;
+  top: calc(100% + 12px);
+  right: 0;
+  z-index: 1010;
+  width: 220px;
+  padding: 8px;
+  display: grid;
+  background: #111112;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.45);
+}
+
+.account-menu-name {
+  padding: 10px 12px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.account-menu a,
+.account-menu button {
+  border: 0;
+  padding: 11px 12px;
+  background: transparent;
+  color: white;
+  text-align: left;
+  text-decoration: none;
+  font-size: 13px;
+}
+
+.account-menu a:hover,
+.account-menu button:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.mobile-menu-toggle {
+  display: none;
+  width: 40px;
+  height: 40px;
+  padding: 10px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: transparent;
+}
+
+.mobile-menu-toggle span {
+  display: block;
+  height: 1px;
+  margin: 5px 0;
+  background: white;
+  transition: transform 0.2s ease;
+}
+
+/* =========================================
+   PAGE AREA
+========================================= */
+
+.app-page {
+  width: 100%;
+  min-height: calc(100vh - 74px);
+}
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 900px) {
+  .app-header-inner {
+    width: min(100% - 28px, 1200px);
+    gap: 15px;
+  }
+
+  .app-navigation { gap: 14px; }
+  .nav-link { font-size: 11px; }
+}
+
+@media (max-width: 700px) {
+  .app-header-inner {
+    height: 64px;
+  }
+
+  .app-logo {
+    font-size: 17px;
+  }
+
+  .mobile-menu-toggle { display: block; }
+
+  .app-navigation {
+    position: absolute;
+    top: 64px;
+    left: 0;
+    right: 0;
+    display: none;
+    padding: 10px 20px 18px;
+    align-items: stretch;
+    background: #080808;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .app-navigation.open { display: grid; }
+
+  .nav-link {
+    padding: 13px 4px;
+    font-size: 13px;
+    letter-spacing: 0;
+  }
+
+  .nav-link.active::after {
+    left: 0;
+    bottom: 8px;
+    transform: none;
+  }
+
+  .profile-button { width: 36px; height: 36px; }
+
+  .account-menu {
+    position: fixed;
+    top: 60px;
+    right: 56px;
+  }
+}
+
+@media (max-width: 520px) {
+  .app-header-inner {
+    width: calc(100% - 20px);
+  }
+
+  .nav-link {
+    font-size: 13px;
+  }
+
+  .app-logo {
+    font-size: 15px;
+  }
+}

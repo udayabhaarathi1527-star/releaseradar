@@ -1,19 +1,27 @@
 import pandas as pd
 import joblib
+import os
+
+# Get current ML folder
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 # Load trained model
-model = joblib.load("release_radar_model.pkl")
+model_path = os.path.join(
+    BASE_DIR,
+    "release_radar_model.pkl"
+)
+
+model = joblib.load(model_path)
 
 # Example movie
 movie = pd.DataFrame([{
-    "budget": 50,
-    "marketing_budget": 15,
-    "rating": 8.0,
+    "budget": 50000000,
     "runtime": 145,
-    "star_power": 3,
-    "competition": 2,
     "genre": "Action",
-    "release_month": 5
+    "original_language": "en",
+    "production_company": "Warner Bros.",
+    "release_month": 5,
+    "release_year": 2026
 }])
 
 # Prediction

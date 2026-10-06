@@ -1,0 +1,651 @@
+/* =========================================================
+   RELEASE RADAR — HISTORY
+   ========================================================= */
+
+.history-container {
+  min-height: calc(100vh - 80px);
+  background:
+    radial-gradient(
+      circle at 85% 15%,
+      rgba(237, 18, 32, 0.07),
+      transparent 28%
+    ),
+    #050505;
+  color: #ffffff;
+}
+
+.history-content {
+  width: min(1380px, calc(100% - 48px));
+  margin: 0 auto;
+  padding: 58px 0 80px;
+}
+
+/* =========================================================
+   PAGE HEADER
+   ========================================================= */
+
+.history-page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 30px;
+  margin-bottom: 42px;
+}
+
+.history-kicker {
+  display: inline-block;
+  margin-bottom: 10px;
+  color: #ff2635;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.history-page-header h1 {
+  margin: 0;
+  font-size: clamp(32px, 4vw, 54px);
+  line-height: 1;
+  font-weight: 900;
+  letter-spacing: -2px;
+}
+
+.history-page-header p {
+  margin: 16px 0 0;
+  color: #85858c;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* =========================================================
+   CLEAR BUTTON
+   ========================================================= */
+
+.clear-history-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  border: 1px solid rgba(255, 38, 53, 0.35);
+  background: rgba(255, 20, 35, 0.08);
+  color: #ff3342;
+  padding: 13px 18px;
+  border-radius: 10px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.clear-history-btn:hover {
+  background: #ed1220;
+  border-color: #ed1220;
+  color: white;
+  transform: translateY(-1px);
+}
+
+.clear-icon {
+  font-size: 18px;
+  line-height: 10px;
+}
+
+/* =========================================================
+   LOADING
+   ========================================================= */
+
+.history-loading {
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  color: #777780;
+}
+
+.history-loader {
+  width: 38px;
+  height: 38px;
+  border: 3px solid #242428;
+  border-top-color: #ff1e2d;
+  border-radius: 50%;
+  animation: historySpin 0.8s linear infinite;
+}
+
+.history-loading p {
+  margin: 0;
+  font-size: 13px;
+}
+
+@keyframes historySpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* =========================================================
+   ERROR
+   ========================================================= */
+
+.history-error {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 18px 20px;
+  border: 1px solid rgba(255, 38, 53, 0.35);
+  border-radius: 14px;
+  background: rgba(80, 0, 5, 0.25);
+}
+
+.history-error-content {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.error-icon {
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #ed1220;
+  color: white;
+  font-weight: 900;
+}
+
+.history-error strong,
+.history-error span {
+  display: block;
+}
+
+.history-error strong {
+  font-size: 13px;
+  margin-bottom: 4px;
+}
+
+.history-error-content span:not(.error-icon) {
+  color: #92929a;
+  font-size: 12px;
+}
+
+.history-error button {
+  border: 0;
+  border-radius: 8px;
+  padding: 10px 15px;
+  background: #ed1220;
+  color: white;
+  font-size: 10px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+/* =========================================================
+   HISTORY PANEL
+   ========================================================= */
+
+.history-panel {
+  border: 1px solid #1d1d21;
+  border-radius: 18px;
+  overflow: hidden;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.025),
+      rgba(255, 255, 255, 0)
+    ),
+    #09090b;
+  box-shadow:
+    0 20px 70px rgba(0, 0, 0, 0.35);
+}
+
+/* =========================================================
+   TOOLBAR
+   ========================================================= */
+
+.history-toolbar {
+  min-height: 86px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 22px;
+  border-bottom: 1px solid #1b1b1f;
+  background: rgba(255, 255, 255, 0.015);
+}
+
+.history-total {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+}
+
+.history-total-icon {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(255, 35, 50, 0.25);
+  border-radius: 11px;
+  background: rgba(255, 20, 35, 0.08);
+  color: #ff2635;
+  font-size: 17px;
+}
+
+.history-total-label {
+  display: block;
+  margin-bottom: 3px;
+  color: #696970;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+}
+
+.history-total strong {
+  display: block;
+  font-size: 21px;
+  line-height: 1;
+}
+
+/* =========================================================
+   REFRESH BUTTON
+   ========================================================= */
+
+.refresh-history-btn {
+  height: 42px;
+  min-width: 112px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+
+  border: 1px solid #29292e;
+  border-radius: 10px;
+
+  background: #111114;
+  color: #c7c7cc;
+
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1px;
+
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.refresh-history-btn:hover:not(:disabled) {
+  border-color: #ed1220;
+  background: rgba(237, 18, 32, 0.08);
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.refresh-history-btn:disabled {
+  opacity: 0.65;
+  cursor: wait;
+}
+
+.refresh-icon {
+  display: inline-block;
+  font-size: 17px;
+  line-height: 1;
+}
+
+.refresh-history-btn.refreshing .refresh-icon {
+  animation: historySpin 0.8s linear infinite;
+}
+
+/* =========================================================
+   TABLE
+   ========================================================= */
+
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.history-panel table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 1050px;
+}
+
+.history-panel thead {
+  background: #0c0c0f;
+}
+
+.history-panel th {
+  padding: 15px 18px;
+  color: #65656d;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 1.3px;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.history-panel td {
+  padding: 17px 18px;
+  border-top: 1px solid #17171a;
+  color: #c5c5ca;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.history-panel tbody tr {
+  transition: background 0.2s ease;
+}
+
+.history-panel tbody tr:hover {
+  background: rgba(255, 255, 255, 0.025);
+}
+
+/* =========================================================
+   MOVIE
+   ========================================================= */
+
+.history-movie {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+}
+
+.history-movie-icon {
+  width: 35px;
+  height: 35px;
+  display: grid;
+  place-items: center;
+  border-radius: 8px;
+  background: #111114;
+  border: 1px solid #25252a;
+  font-size: 16px;
+}
+
+.history-movie strong {
+  display: block;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.history-movie span {
+  display: block;
+  margin-top: 3px;
+  color: #5f5f66;
+  font-size: 9px;
+}
+
+/* =========================================================
+   VALUES
+   ========================================================= */
+
+.genre-value {
+  color: #a8a8af;
+}
+
+.budget-value {
+  color: #e4e4e8;
+  font-weight: 600;
+}
+
+.rating-value {
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.rating-small {
+  margin-left: 2px;
+  color: #66666d;
+  font-size: 10px;
+}
+
+/* =========================================================
+   STATUS
+   ========================================================= */
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 10px;
+  border-radius: 7px;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.7px;
+}
+
+.status-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.status-success {
+  background: rgba(35, 190, 110, 0.08);
+  border: 1px solid rgba(35, 190, 110, 0.18);
+  color: #55d99a;
+}
+
+.status-moderate {
+  background: rgba(255, 177, 48, 0.08);
+  border: 1px solid rgba(255, 177, 48, 0.18);
+  color: #ffc15c;
+}
+
+.status-low-probability {
+  background: rgba(255, 38, 53, 0.08);
+  border: 1px solid rgba(255, 38, 53, 0.18);
+  color: #ff5966;
+}
+
+/* =========================================================
+   PROBABILITY
+   ========================================================= */
+
+.probability-cell {
+  width: 125px;
+}
+
+.probability-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 7px;
+}
+
+.probability-top span {
+  color: #5f5f66;
+  font-size: 9px;
+}
+
+.probability-top strong {
+  color: #ff3342;
+  font-size: 11px;
+}
+
+.probability-bar {
+  height: 4px;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 99px;
+  background: #202024;
+}
+
+.probability-bar i {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(
+    90deg,
+    #a9000c,
+    #ff2030
+  );
+}
+
+/* =========================================================
+   DATE
+   ========================================================= */
+
+.date-cell {
+  color: #74747c !important;
+}
+
+/* =========================================================
+   DELETE
+   ========================================================= */
+
+.delete-btn {
+  border: 1px solid rgba(255, 38, 53, 0.25);
+  border-radius: 7px;
+  padding: 7px 10px;
+  background: transparent;
+  color: #ff5360;
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 0.8px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.delete-btn:hover {
+  background: #ed1220;
+  border-color: #ed1220;
+  color: white;
+}
+
+/* =========================================================
+   EMPTY STATE
+   ========================================================= */
+
+.empty-history {
+  min-height: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 50px 20px;
+}
+
+.empty-history-icon {
+  width: 82px;
+  height: 82px;
+  display: grid;
+  place-items: center;
+  margin-bottom: 24px;
+  border: 1px solid rgba(255, 30, 45, 0.25);
+  border-radius: 22px;
+  background:
+    radial-gradient(
+      circle,
+      rgba(255, 20, 35, 0.16),
+      transparent 70%
+    );
+  color: #ff2635;
+  font-size: 28px;
+}
+
+.empty-history-kicker {
+  margin-bottom: 10px;
+  color: #ff2635;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 1.8px;
+}
+
+.empty-history h3 {
+  margin: 0;
+  font-size: 25px;
+}
+
+.empty-history p {
+  max-width: 480px;
+  margin: 12px 0 25px;
+  color: #777780;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.empty-history button {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  border: 0;
+  border-radius: 9px;
+  padding: 13px 19px;
+  background: #ed1220;
+  color: white;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.8px;
+  cursor: pointer;
+  box-shadow: 0 8px 30px rgba(237, 18, 32, 0.18);
+  transition: 0.2s ease;
+}
+
+.empty-history button:hover {
+  background: #ff1e2d;
+  transform: translateY(-2px);
+}
+
+.empty-history button span {
+  font-size: 15px;
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 800px) {
+  .history-content {
+    width: min(100% - 28px, 1380px);
+    padding-top: 35px;
+  }
+
+  .history-page-header {
+    align-items: flex-start;
+    flex-direction: column;
+    margin-bottom: 28px;
+  }
+
+  .history-page-header h1 {
+    font-size: 34px;
+  }
+
+  .clear-history-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .history-toolbar {
+    padding: 14px;
+  }
+}
+
+@media (max-width: 500px) {
+  .history-content {
+    width: calc(100% - 20px);
+  }
+
+  .history-page-header h1 {
+    font-size: 29px;
+    letter-spacing: -1px;
+  }
+
+  .history-page-header p {
+    font-size: 13px;
+  }
+
+  .history-total-icon {
+    width: 36px;
+    height: 36px;
+  }
+
+  .refresh-history-btn {
+    min-width: 98px;
+  }
+}
